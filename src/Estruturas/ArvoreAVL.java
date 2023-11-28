@@ -46,8 +46,20 @@ public class ArvoreAVL {
     private No balancear(No no) {
         // Pendendo pra direita
         if (no.fator == -2) {
-            return res(no);
+            if (no.direita.fator <= 0) {
+                return res(no);
+            } else {
+                return rde(no);
+            }
+        // Pendendo pra esquerda
+        } else if (no.fator == 2) {
+            if (no.esquerda.fator >= 0) {
+                return rds(no);
+            } else {
+                return rdd(no);
+            }
         }
+        // O fator é 0, +1 ou -1, retorna o nó sem mudanças
         return no;
     }
 
@@ -59,6 +71,28 @@ public class ArvoreAVL {
         atualizar(no);
         atualizar(subDir);
         return subDir;
+    }
+
+    private No rds(No no) {
+        System.out.println("Rotação direita simples");
+        No subEsq = no.esquerda;
+        no.esquerda = subEsq.direita;
+        subEsq.direita = no;
+        atualizar(no);
+        atualizar(subEsq);
+        return subEsq;
+    }
+
+    private No rde(No no) {
+        System.out.println("Rotação dupla a esquerda");
+        no.direita = rds(no.direita);
+        return res(no);
+    }
+
+    private No rdd(No no) {
+        System.out.println("Rotação dupla a direita");
+        no.esquerda = res(no.esquerda);
+        return rds(no);
     }
 
     public void preOrdem() {
