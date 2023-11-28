@@ -1,7 +1,7 @@
 package Estruturas;
 
 public class ArvoreAVL {
-    public No raiz;
+    public NoArvore raiz;
 
     public ArvoreAVL() {
         raiz = null;
@@ -9,31 +9,31 @@ public class ArvoreAVL {
 
     public void adicionar(Object valor) {
         if (raiz == null) {
-            raiz = new No(valor);
+            raiz = new NoArvore(valor);
         } else {
             raiz = adicionar(valor, raiz);
         }
     }
 
-    private No adicionar(Object valor, No no) {
+    private NoArvore adicionar(Object valor, NoArvore no) {
         if (valor.toString().compareTo(no.valor.toString()) < 0) {
             if (no.esquerda == null) {
-                no.esquerda = new No(valor);
+                no.esquerda = new NoArvore(valor);
             } else {
-                adicionar(valor,no.esquerda);
+                adicionar(valor, no.esquerda);
             }
         } else if (valor.toString().compareTo(no.valor.toString()) > 0) {
             if (no.direita == null) {
-                no.direita = new No(valor);
+                no.direita = new NoArvore(valor);
             } else {
-                adicionar(valor,no.direita);
+                adicionar(valor, no.direita);
             }
         }
         atualizar(no);
         return balancear(no);
     }
 
-    private void atualizar(No no) {
+    private void atualizar(NoArvore no) {
         int alturaEsquerda = (no.esquerda == null) ? -1 : no.esquerda.altura;
         int alturaDireita = (no.direita == null) ? -1 : no.direita.altura;
 
@@ -42,7 +42,7 @@ public class ArvoreAVL {
         no.fator = alturaEsquerda - alturaDireita;
     }
 
-    private No balancear(No no) {
+    private NoArvore balancear(NoArvore no) {
         // Pendendo pra direita
         if (no.fator == -2) {
             if (no.direita.fator <= 0) {
@@ -62,9 +62,9 @@ public class ArvoreAVL {
         return no;
     }
 
-    private No res(No no) {
+    private NoArvore res(NoArvore no) {
         System.out.println("Rotação esquerda simples");
-        No subDir = no.direita;
+        NoArvore subDir = no.direita;
         no.direita = subDir.esquerda;
         subDir.esquerda = no;
         atualizar(no);
@@ -72,9 +72,9 @@ public class ArvoreAVL {
         return subDir;
     }
 
-    private No rds(No no) {
+    private NoArvore rds(NoArvore no) {
         System.out.println("Rotação direita simples");
-        No subEsq = no.esquerda;
+        NoArvore subEsq = no.esquerda;
         no.esquerda = subEsq.direita;
         subEsq.direita = no;
         atualizar(no);
@@ -82,13 +82,13 @@ public class ArvoreAVL {
         return subEsq;
     }
 
-    private No rde(No no) {
+    private NoArvore rde(NoArvore no) {
         System.out.println("Rotação dupla a esquerda");
         no.direita = rds(no.direita);
         return res(no);
     }
 
-    private No rdd(No no) {
+    private NoArvore rdd(NoArvore no) {
         System.out.println("Rotação dupla a direita");
         no.esquerda = res(no.esquerda);
         return rds(no);
@@ -101,7 +101,7 @@ public class ArvoreAVL {
         }
     }
 
-    private void preOrdem(No no) {
+    private void preOrdem(NoArvore no) {
         System.out.print(no.valor + " ");
         if (no.esquerda != null) {
             preOrdem(no.esquerda);
@@ -118,7 +118,7 @@ public class ArvoreAVL {
         }
     }
 
-    private void emOrdem(No no) {
+    private void emOrdem(NoArvore no) {
         if (no.esquerda != null) {
             emOrdem(no.esquerda);
         }
@@ -135,7 +135,7 @@ public class ArvoreAVL {
         }
     }
 
-    private void posOrdem(No no) {
+    private void posOrdem(NoArvore no) {
         if (no.esquerda != null) {
             posOrdem(no.esquerda);
         }

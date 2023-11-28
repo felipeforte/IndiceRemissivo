@@ -1,12 +1,12 @@
 package Estruturas;
 
-public class No {
+public class NoArvore {
     public Object valor;
     public int altura;
     public int fator;
-    public No esquerda, direita;
+    public NoArvore esquerda, direita;
 
-    public No(Object valor) {
+    public NoArvore(Object valor) {
         this.valor = valor;
         this.altura = 0;
         this.fator = 0;

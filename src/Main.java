@@ -31,6 +31,6 @@ public class Main {
 
 
 
-        System.out.println(avl.raiz.esquerda.esquerda.valor);
+        System.out.println(avl.raiz.valor);
     }
 }

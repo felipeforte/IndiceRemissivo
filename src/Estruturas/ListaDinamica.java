@@ -1,6 +1,8 @@
+package Estruturas;
+
 public class ListaDinamica {
-    private No primeiro;
-    private No ultimo;
+    private NoLista primeiro;
+    private NoLista ultimo;
     private int tamanho;
 
     public ListaDinamica() {
@@ -14,7 +16,7 @@ public class ListaDinamica {
     }
 
     public void adiciona(Object objeto) {
-        No novo = new No(objeto);
+        NoLista novo = new NoLista(objeto);
 
         if (primeiro == null) {
             primeiro = novo;
@@ -31,11 +33,11 @@ public class ListaDinamica {
         if (indice>tamanho) {
             throw new IndexOutOfBoundsException();
         } else {
-            No atual = primeiro;
+            NoLista atual = primeiro;
             for (int i=0;i<indice;i++) {
                 atual = atual.proximo;
             }
-            No novo = new No(objeto);
+            NoLista novo = new NoLista(objeto);
             if (atual == primeiro) {
                 novo.proximo = atual;
                 atual.anterior = novo;
@@ -61,7 +63,7 @@ public class ListaDinamica {
     }
 
     public boolean contem(Object objeto) {
-        No atual = primeiro;
+        NoLista atual = primeiro;
         for (int i=0;i<tamanho;i++) {
             if (objeto.equals(atual.valor)) {
                 return true;
@@ -72,7 +74,7 @@ public class ListaDinamica {
     }
 
     public void remover(Object objeto) {
-        No atual = primeiro;
+        NoLista atual = primeiro;
         for (int i=0;i<tamanho;i++) {
             if (objeto.equals(atual)) {
                 atual.anterior.proximo = atual.proximo;
@@ -87,7 +89,7 @@ public class ListaDinamica {
         if (indice>tamanho) {
             throw new IndexOutOfBoundsException();
         } else {
-            No atual = primeiro;
+            NoLista atual = primeiro;
             for (int i=0;i<indice;i++) {
                 atual = atual.proximo;
             }
@@ -105,7 +107,7 @@ public class ListaDinamica {
     }
 
     public Object get(int indice) {
-        No atual = primeiro;
+        NoLista atual = primeiro;
         for (int i=0;i<indice;i++) {
             atual = atual.proximo;
         }
@@ -113,7 +115,7 @@ public class ListaDinamica {
     }
 
     public int indexOf(Object objeto) {
-        No atual = primeiro;
+        NoLista atual = primeiro;
         for (int i=0;i<tamanho;i++) {
             if (objeto == atual.valor) {
                 return i;
@@ -125,7 +127,7 @@ public class ListaDinamica {
 
     @Override
     public String toString() {
-        No atual = primeiro;
+        NoLista atual = primeiro;
         String str = "[ ";
         for (int i=0;i<tamanho;i++) {
             str += atual.valor + " ";
