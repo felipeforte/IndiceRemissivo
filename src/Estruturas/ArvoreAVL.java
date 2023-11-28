@@ -11,7 +11,7 @@ public class ArvoreAVL {
         if (raiz == null) {
             raiz = new No(valor);
         } else {
-            adicionar(valor, raiz);
+            raiz = adicionar(valor, raiz);
         }
     }
 
@@ -46,17 +46,19 @@ public class ArvoreAVL {
     private No balancear(No no) {
         // Pendendo pra direita
         if (no.fator == -2) {
-            
+            return res(no);
         }
+        return no;
     }
 
-    private void res(No no) {
+    private No res(No no) {
         System.out.println("Rotação esquerda simples");
         No subDir = no.direita;
         no.direita = subDir.esquerda;
         subDir.esquerda = no;
         atualizar(no);
         atualizar(subDir);
+        return subDir;
     }
 
     public void preOrdem() {

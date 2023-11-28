@@ -13,6 +13,6 @@ public class Main {
 
 
 
-        System.out.println(avl.raiz.valor);
+        System.out.println(avl.raiz.direita.valor);
     }
 }
