@@ -4,7 +4,7 @@ public class No {
     public Object valor;
     public int altura;
     public int fator;
-    public No esquerda, direita, parente;
+    public No esquerda, direita;
 
     public No(Object valor) {
         this.valor = valor;

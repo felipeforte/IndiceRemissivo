@@ -29,7 +29,6 @@ public class ArvoreAVL {
                 adicionar(valor,no.direita);
             }
         }
-
         atualizar(no);
         return balancear(no);
     }
