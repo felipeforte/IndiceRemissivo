@@ -10,6 +10,7 @@ public class NoLista implements Comparable<NoLista> {
         proximo = null;
         anterior = null;
     }
+
     @Override
     public int compareTo(NoLista outro) {
         if (valor instanceof Integer && outro.valor instanceof Integer) {
