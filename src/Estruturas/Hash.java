@@ -7,7 +7,11 @@ public class Hash {
         this.arvore = arvore;
     }
 
-    public void adicionar(Object valor) {
-        arvore.adicionar(valor);
+    public void adicionar(Object valor, int linha) {
+        arvore.adicionar(valor,linha);
+    }
+
+    public String toString() {
+        return arvore.toString();
     }
 }

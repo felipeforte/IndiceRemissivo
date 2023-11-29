@@ -2,32 +2,35 @@ package Estruturas;
 
 public class ArvoreAVL {
     public NoArvore raiz;
+    private String saida;
 
     public ArvoreAVL() {
         raiz = null;
     }
 
-    public void adicionar(Object valor) {
+    public void adicionar(Object valor, int linha) {
         if (raiz == null) {
-            raiz = new NoArvore(valor);
+            raiz = new NoArvore(valor, linha);
         } else {
-            raiz = adicionar(valor, raiz);
+            raiz = adicionar(valor, raiz, linha);
         }
     }
 
-    private NoArvore adicionar(Object valor, NoArvore no) {
+    private NoArvore adicionar(Object valor, NoArvore no, int linha) {
         if (valor.toString().compareTo(no.valor.toString()) < 0) {
             if (no.esquerda == null) {
-                no.esquerda = new NoArvore(valor);
+                no.esquerda = new NoArvore(valor, linha);
             } else {
-                adicionar(valor, no.esquerda);
+                adicionar(valor, no.esquerda, linha);
             }
         } else if (valor.toString().compareTo(no.valor.toString()) > 0) {
             if (no.direita == null) {
-                no.direita = new NoArvore(valor);
+                no.direita = new NoArvore(valor, linha);
             } else {
-                adicionar(valor, no.direita);
+                adicionar(valor, no.direita, linha);
             }
+        } else {
+            no.addLinha(linha);
         }
         atualizar(no);
         return balancear(no);
@@ -114,7 +117,6 @@ public class ArvoreAVL {
     public void emOrdem() {
         if (raiz != null) {
             emOrdem(raiz);
-            System.out.println();
         }
     }
 
@@ -122,7 +124,7 @@ public class ArvoreAVL {
         if (no.esquerda != null) {
             emOrdem(no.esquerda);
         }
-        System.out.print(no.valor + " ");
+        saida += (no.toString() + "\n");
         if (no.direita != null) {
             emOrdem(no.direita);
         }
@@ -143,5 +145,16 @@ public class ArvoreAVL {
             posOrdem(no.direita);
         }
         System.out.print(no.valor + " ");
+    }
+
+    private void zerarString() {
+        saida = "";
+    }
+
+    @Override
+    public String toString() {
+        zerarString();
+        emOrdem();
+        return saida;
     }
 }

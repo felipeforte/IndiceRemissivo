@@ -3,35 +3,24 @@ import Estruturas.TabelaHash;
 
 public class Main {
     public static void main(String[] args) {
-        ArvoreAVL avl = new ArvoreAVL();
+        TabelaHash tabela = new TabelaHash();
         // RES
-//        avl.adicionar("1");
-//        avl.adicionar("0");
-//        avl.adicionar("3");
-//        avl.adicionar("2");
-//        avl.adicionar("4");
-//        avl.adicionar("5");
-
-
         // RDS
-//        avl.adicionar("4");
-//        avl.adicionar("5");
-//        avl.adicionar("2");
-//        avl.adicionar("3");
-//        avl.adicionar("1");
-//        avl.adicionar("0");
-
         // RDE
-        avl.adicionar("1");
-        avl.adicionar("0");
-        avl.adicionar("4");
-        avl.adicionar("5");
-        avl.adicionar("3");
-        avl.adicionar("2");
         // RDD
+        tabela.adicionar("and",3);
+        tabela.adicionar("amo",3);
+        tabela.adicionar("and",4);
+        tabela.adicionar("and",5);
+        tabela.adicionar("bolha",11);
+        tabela.adicionar("xpto",2);
+        tabela.adicionar("tchonga",6);
+        tabela.adicionar("fonga",12);
+        tabela.adicionar("momo",1);
+        tabela.adicionar("caralho",7);
+        tabela.adicionar("teucu",9);
 
 
-        String a = "Abcd";
-        System.out.println(a.split("")[0].toLowerCase());
+        System.out.println(tabela);
     }
 }
