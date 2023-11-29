@@ -1,8 +1,7 @@
 import Estruturas.ListaDinamica;
 import Estruturas.TabelaHash;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+
+import java.io.*;
 
 public class Main {
 
@@ -10,8 +9,10 @@ public class Main {
         TabelaHash tabela = new TabelaHash();
         ListaDinamica palavras = new ListaDinamica();
 
+
+
         // Ler palavras-chave
-        String arqPalavras = "/home/felipeforte/Downloads/exemplo_palavras-chave.txt";
+        String arqPalavras = "C:/Users/iurin/Downloads/exemplo_palavras-chave.txt";
         try (BufferedReader br = new BufferedReader(new FileReader(arqPalavras))) {
             String linha;
 
@@ -23,7 +24,7 @@ public class Main {
             e.printStackTrace();
         }
 
-        String nomeArquivo = "/home/felipeforte/Downloads/exemplo_texto.txt";
+        String nomeArquivo = "C:/Users/iurin/Downloads/exemplo_texto.txt";
         try (BufferedReader br = new BufferedReader(new FileReader(nomeArquivo))) {
             String linha;
             int cont = 1;
@@ -42,6 +43,17 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        // Escrever no arquivo
+        try {
+            FileWriter arq = new FileWriter("C:/Users/iurin/Downloads/resultado.txt");
+            PrintWriter gravarArq = new PrintWriter(arq);
+            gravarArq.print(tabela);
+            arq.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
         System.out.println(tabela);
     }
 }
