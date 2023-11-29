@@ -63,7 +63,7 @@ public class ArvoreAVL {
     }
 
     private NoArvore res(NoArvore no) {
-        System.out.println("Rotação esquerda simples");
+//        System.out.println("Rotação esquerda simples");
         NoArvore subDir = no.direita;
         no.direita = subDir.esquerda;
         subDir.esquerda = no;
@@ -73,7 +73,7 @@ public class ArvoreAVL {
     }
 
     private NoArvore rds(NoArvore no) {
-        System.out.println("Rotação direita simples");
+//        System.out.println("Rotação direita simples");
         NoArvore subEsq = no.esquerda;
         no.esquerda = subEsq.direita;
         subEsq.direita = no;
@@ -83,13 +83,13 @@ public class ArvoreAVL {
     }
 
     private NoArvore rde(NoArvore no) {
-        System.out.println("Rotação dupla a esquerda");
+//        System.out.println("Rotação dupla a esquerda");
         no.direita = rds(no.direita);
         return res(no);
     }
 
     private NoArvore rdd(NoArvore no) {
-        System.out.println("Rotação dupla a direita");
+//        System.out.println("Rotação dupla a direita");
         no.esquerda = res(no.esquerda);
         return rds(no);
     }

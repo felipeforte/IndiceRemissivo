@@ -1,7 +1,13 @@
 package Estruturas;
 
 public class Hash {
-    public int chave;
-    public Object valor;
-    public Hash proximo;
+    public ArvoreAVL arvore;
+
+    public Hash(ArvoreAVL arvore) {
+        this.arvore = arvore;
+    }
+
+    public void adicionar(Object valor) {
+        arvore.adicionar(valor);
+    }
 }

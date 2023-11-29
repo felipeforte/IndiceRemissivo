@@ -1,4 +1,5 @@
 import Estruturas.ArvoreAVL;
+import Estruturas.TabelaHash;
 
 public class Main {
     public static void main(String[] args) {
@@ -30,7 +31,7 @@ public class Main {
         // RDD
 
 
-
-        System.out.println(avl.raiz.valor);
+        String a = "Abcd";
+        System.out.println(a.split("")[0].toLowerCase());
     }
 }
