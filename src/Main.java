@@ -35,7 +35,7 @@ public class Main {
                 // Faça o processamento necessário com cada linha
                 String[] split = linha.split(" ");
                 for (int i=0;i < split.length;i++) {
-                    String palavra = split[i].replaceAll("[^a-zA-Z-]","");
+                    String palavra = split[i].replaceAll("[^a-zA-Zà-úÀ-Ú-]","");
                     if (palavras.contem(palavra.toLowerCase())) {
                         tabela.adicionar(palavra.toLowerCase(),cont);
                     }
