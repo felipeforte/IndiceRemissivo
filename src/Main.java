@@ -2,6 +2,7 @@ import Estruturas.ListaDinamica;
 import Estruturas.TabelaHash;
 
 import java.io.*;
+import java.util.Arrays;
 
 public class Main {
 
@@ -12,7 +13,7 @@ public class Main {
 
 
         // Ler palavras-chave
-        String arqPalavras = "C:/Users/iurin/Downloads/exemplo_palavras-chave.txt";
+        String arqPalavras = "/home/felipeforte/Documentos/Java/IndiceRemissivo/src/palavras-chave.txt";
         try (BufferedReader br = new BufferedReader(new FileReader(arqPalavras))) {
             String linha;
 
@@ -24,7 +25,7 @@ public class Main {
             e.printStackTrace();
         }
 
-        String nomeArquivo = "C:/Users/iurin/Downloads/exemplo_texto.txt";
+        String nomeArquivo = "/home/felipeforte/Documentos/Java/IndiceRemissivo/src/texto.txt";
         try (BufferedReader br = new BufferedReader(new FileReader(nomeArquivo))) {
             String linha;
             int cont = 1;
@@ -34,8 +35,9 @@ public class Main {
                 // Faça o processamento necessário com cada linha
                 String[] split = linha.split(" ");
                 for (int i=0;i < split.length;i++) {
-                    if (palavras.contem(split[i].toLowerCase())) {
-                        tabela.adicionar(split[i].toLowerCase(),cont);
+                    String palavra = split[i].replaceAll("[^a-zA-Z-]","");
+                    if (palavras.contem(palavra.toLowerCase())) {
+                        tabela.adicionar(palavra.toLowerCase(),cont);
                     }
                 }
                 cont++;
@@ -45,7 +47,7 @@ public class Main {
         }
         // Escrever no arquivo
         try {
-            FileWriter arq = new FileWriter("C:/Users/iurin/Downloads/resultado.txt");
+            FileWriter arq = new FileWriter("/home/felipeforte/Documentos/Java/IndiceRemissivo/src/indice.txt");
             PrintWriter gravarArq = new PrintWriter(arq);
             gravarArq.print(tabela);
             arq.close();
